@@ -147,6 +147,7 @@ const AuthProvider = ({ children }) => {
                 authLoading,
                 isLoggedIn,
                 operation,
+                setErrorText,
                 setOperation,
                 verify,
             }}>

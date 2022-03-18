@@ -7,10 +7,18 @@ const Auth = () => {
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
 
-    const { login, register, errorText, authLoading, operation, setOperation } =
-        useAuthContext();
+    const {
+        login,
+        register,
+        errorText,
+        setErrorText,
+        authLoading,
+        operation,
+        setOperation,
+    } = useAuthContext();
 
     const toggleOperation = () => {
+        setErrorText("");
         if (operation === "login") {
             setOperation("register");
         } else if (operation === "register") {
@@ -27,16 +35,9 @@ const Auth = () => {
         }
     };
     return (
-        <div className='d-flex flex-row justify-content-center'>
-            <div className='container-fluid d-flex justify-content-center auth-container'>
-                <h1 className='auth-title text-align-center'>
-                    {operation === "login"
-                        ? "Login"
-                        : operation === "register"
-                        ? "Register"
-                        : "Logout"}
-                </h1>
-                <div className='row sign-container align-items-center'>
+        <div className='d-flex flex-row justify-content-center text-align-center'>
+            <div className='container-fluid auth-container'>
+                <div className='row sign-container justify-content-center mt-5'>
                     <div className='input_container col-12 col-md-6'>
                         {operation === "register" && (
                             <CustomInput
@@ -72,7 +73,7 @@ const Auth = () => {
                                 : "Logout"}
                         </button>
                         <button
-                            className='register-prompt'
+                            className='register-prompt col-12'
                             disabled={authLoading}
                             onClick={toggleOperation}>
                             {operation === "login"

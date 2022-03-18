@@ -1,21 +1,24 @@
 import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
 
 import { useAuthContext } from "../../context-provider/context-provider";
 
 export default function NavBar() {
-    const { isLoggedIn, logout } = useAuthContext();
+    const { isLoggedIn, logout, authLoading } = useAuthContext();
     return (
-        <Box sx={{ flexGrow: 0 }}>
-            <AppBar position='static'>
-                {!isLoggedIn && <h2>Please Login</h2>}
+        <nav class='navbar navbar-light bg-light'>
+            <form class='form-inline'>
                 {isLoggedIn && (
-                    <button className='w-1' onClick={() => logout()}>
-                        Logout
+                    <button
+                        class='btn btn-sm btn-outline-secondary'
+                        type='button'
+                        onClick={() => logout()}>
+                        {authLoading ? "Loading" : "Logout"}
                     </button>
                 )}
-            </AppBar>
-        </Box>
+                {!isLoggedIn && (
+                    <h1>{authLoading ? "Loading" : "Please Login"}</h1>
+                )}
+            </form>
+        </nav>
     );
 }

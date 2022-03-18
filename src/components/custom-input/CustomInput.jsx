@@ -11,7 +11,7 @@ const CustomInput = (props) => {
                     fontSize: "0.8rem",
                 },
             }}
-            className='mt-3'
+            className='mt-3 col-12'
             type={type || "text"}
             value={value}
             error={hasError}
