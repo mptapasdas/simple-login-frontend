@@ -5,11 +5,11 @@ import { useAuthContext } from "../../context-provider/context-provider";
 export default function NavBar() {
     const { isLoggedIn, logout, authLoading } = useAuthContext();
     return (
-        <nav class='navbar navbar-light bg-light'>
-            <form class='form-inline'>
+        <nav className='navbar navbar-light bg-light'>
+            <form className='form-inline'>
                 {isLoggedIn && (
                     <button
-                        class='btn btn-sm btn-outline-secondary'
+                        className='btn btn-sm btn-outline-secondary'
                         type='button'
                         onClick={() => logout()}>
                         {authLoading ? "Loading" : "Logout"}
