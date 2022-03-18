@@ -52,7 +52,7 @@ const AuthProvider = ({ children }) => {
             setErrorText("Login Successful");
             setAuthLoading(false);
 
-            //update favourite courses
+
         } catch (error) {
             setIsLoggedIn(false);
             setErrorText(error.response.data.msg);
