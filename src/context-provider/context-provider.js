@@ -51,10 +51,9 @@ const AuthProvider = ({ children }) => {
             setIsLoggedIn(true);
             setErrorText("Login Successful");
             setAuthLoading(false);
-
-
         } catch (error) {
             setIsLoggedIn(false);
+            console.log(error.response);
             setErrorText(error.response.data.msg);
             setAuthLoading(false);
         }
@@ -90,7 +89,7 @@ const AuthProvider = ({ children }) => {
                     token: data.token,
                 })
             );
-            setUser({ name: data.user.name });
+            setUser({ name: data.user.name, email: data.user.email });
             setIsLoggedIn(true);
             setAuthLoading(false);
         } catch (error) {
